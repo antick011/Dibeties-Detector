@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+</head>
+<body>
+    <h1>Diabetes Checkup</h1>
+    <form action="/predict" method="POST">
+        <label for="pregnancies">Pregnancies:</label>
+        <input type="number" name="pregnancies" id="pregnancies" required><br><br>
+
+        <label for="glucose">Glucose:</label>
+        <input type="number" name="glucose" id="glucose" required><br><br>
+
+        <label for="bp">Blood Pressure:</label>
+        <input type="number" name="bp" id="bp" required><br><br>
+
+        <label for="skinthickness">Skin Thickness:</label>
+        <input type="number" name="skinthickness" id="skinthickness" required><br><br>
+
+        <label for="insulin">Insulin:</label>
+        <input type="number" name="insulin" id="insulin" required><br><br>
+
+        <label for="bmi">BMI:</label>
+        <input type="number" name="bmi" id="bmi" required><br><br>
+
+        <label for="dpf">Diabetes Pedigree Function:</label>
+        <input type="number" name="dpf" id="dpf" required><br><br>
+
+        <label for="age">Age:</label>
+        <input type="number" name="age" id="age" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if output %}
+        <h2>{{ output }}</h2>
+        <p>Accuracy: {{ accuracy }}%</p>
+        <h3>Visualized Patient Report</h3>
+
+        <h4>Pregnancy count Graph</h4>
+        <img src="data:image/png;base64,{{ fig_preg }}" alt="Pregnancy Count Graph">
+
+        <h4>Glucose Value Graph</h4>
+        <img src="data:image/png;base64,{{ fig_glucose }}" alt="Glucose Value Graph">
+
+        <h4>Blood Pressure Value Graph</h4>
+        <img src="data:image/png;base64,{{ fig_bp }}" alt="Blood Pressure Value Graph">
+    {% endif %}
+</body>
+</html>
